@@ -9,38 +9,6 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.all.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script>
-    (function () {
-      emailjs.init("FzMCSnDCZkjNQx-3v");
-    })();
-
-    document.getElementById('contact-form').addEventListener('submit', function (event) {
-      event.preventDefault();
-
-      if (navigator.onLine) {
-        emailjs.sendForm('service_qx6ifcn', 'template_lv7xnpd', this)
-          .then(function () {
-            Swal.fire({
-              icon: 'success',
-              title: 'Email Sent',
-              text: 'Your email was sent successfully!',
-            });
-          }, function (error) {
-            Swal.fire({
-              icon: 'error',
-              title: 'Failed to Send',
-              text: 'There was an error sending your email: ' + JSON.stringify(error),
-            });
-          });
-      } else {
-        Swal.fire({
-          icon: 'warning',
-          title: 'No Internet Connection',
-          text: 'Please check your internet connection and try again.',
-        });
-      }
-    });
-  </script>
 
   <style>
     :root {
@@ -282,7 +250,7 @@
         </div>
       </div>
       <div class="col-md-6 col-lg-5 col-lg-4 mx-auto">
-        <form>
+        <form id="form-control">
           <div class="form-group mb-2">
             <label for="email">Email:</label>
             <input type="email" class="form-control" id="email" required>
@@ -326,6 +294,38 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
   <script>
+
+(function () {
+      emailjs.init("FzMCSnDCZkjNQx-3v");
+    })();
+
+    document.getElementById('contact-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      if (navigator.onLine) {
+        emailjs.sendForm('service_qx6ifcn', 'template_lv7xnpd', this)
+          .then(function () {
+            Swal.fire({
+              icon: 'success',
+              title: 'Email Sent',
+              text: 'Your email was sent successfully!',
+            });
+          }, function (error) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Failed to Send',
+              text: 'There was an error sending your email: ' + JSON.stringify(error),
+            });
+          });
+      } else {
+        Swal.fire({
+          icon: 'warning',
+          title: 'No Internet Connection',
+          text: 'Please check your internet connection and try again.',
+        });
+      }
+    });
+
     const spot = [
       {
         path: "",
