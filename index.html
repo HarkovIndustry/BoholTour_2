@@ -247,17 +247,17 @@
         </div>
       </div>
       <div class="col-md-6 col-lg-5 col-lg-4 mx-auto">
-        <form id="form-control">
-          <div class="form-group mb-2">
-            <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" required>
-          </div>
-          <div class="form-group mb-2">
-            <label for="message">Message:</label>
-            <textarea class="form-control" id="message" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Send</button>
-        </form>
+               <form id="contact-form">
+  <div class="form-group mb-2">
+    <label for="email">Email:</label>
+    <input type="email" class="form-control" id="email" name="from_email" required>
+  </div>
+  <div class="form-group mb-2">
+    <label for="message">Message:</label>
+    <textarea class="form-control" id="message" name="message" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Send</button>
+</form>
       </div>
     </div>
   </section>
@@ -294,36 +294,35 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
 
-(function () {
-      emailjs.init("FzMCSnDCZkjNQx-3v");
-    })();
+(function () { 
+  emailjs.init("FzMCSnDCZkjNQx-3v"); 
+})();
 
-    document.getElementById('contact-form').addEventListener('submit', function (event) {
-      event.preventDefault();
-
-      if (navigator.onLine) {
-        emailjs.sendForm('service_qx6ifcn', 'template_lv7xnpd', this)
-          .then(function () {
-            Swal.fire({
-              icon: 'success',
-              title: 'Email Sent',
-              text: 'Your email was sent successfully!',
-            });
-          }, function (error) {
-            Swal.fire({
-              icon: 'error',
-              title: 'Failed to Send',
-              text: 'There was an error sending your email: ' + JSON.stringify(error),
-            });
-          });
-      } else {
-        Swal.fire({
-          icon: 'warning',
-          title: 'No Internet Connection',
-          text: 'Please check your internet connection and try again.',
+document.getElementById('contact-form').addEventListener('submit', function (event) {
+  event.preventDefault();
+  if (navigator.onLine) {
+    emailjs.sendForm('service_qx6ifcn', 'template_lv7xnpd', this)
+      .then(function () {
+        Swal.fire({ 
+          icon: 'success', 
+          title: 'Email Sent', 
+          text: 'Your email was sent successfully!' 
         });
-      }
+      }, function (error) {
+        Swal.fire({ 
+          icon: 'error', 
+          title: 'Failed to Send', 
+          text: 'There was an error sending your email: ' + JSON.stringify(error) 
+        });
+      });
+  } else {
+    Swal.fire({ 
+      icon: 'warning', 
+      title: 'No Internet Connection', 
+      text: 'Please check your internet connection and try again.' 
     });
+  }
+});
 
     const spot = [
       {
